@@ -1,4 +1,5 @@
 .vscode/
-"Arduino.code-workspace"
-"RSA Key.java"
-"UhkKeyboardDescriptors.c"
+Arduino.code-workspace
+RSA Key.java
+UhkKeyboardDescriptors.c
+myproj/
