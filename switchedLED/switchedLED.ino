@@ -1,38 +1,45 @@
-#define WINVER 0x0500
-#include <windows.h>
+int ledPin = 3;
+int buttonPin = 2;
 
-int buttonvalue=0;
-int button=3;
-int led=2;
+int buttonState = 0;
+int brightness = 0;
+int brightup = 2;
 
-void setup() {
-  Serial.begin(9600);
-  INPUT ip;
-  pinMode(button,INPUT);
-  pinMode(led, OUTPUT);
-  // Set up a generic keyboard event.
-  ip.type = INPUT_KEYBOARD;
-  ip.ki.wScan = 0; // hardware scan code for key
-  ip.ki.time = 0;
-  ip.ki.dwExtraInfo = 0;
+void setup()
+{
+    //Serial.begin(9600);
+    pinMode(ledPin, OUTPUT);
+    pinMode(buttonPin, INPUT);
 }
 
-void loop() {
-  buttonvalue = digitalRead(button);
-  if (buttonvalue!=0)
-  {
-    digitalWrite(led,HIGH);
-    // Press the "A" key
-    ip.ki.wVk = 0x41; // virtual-key code for the "a" key
-    ip.ki.dwFlags = 0; // 0 for key press
-    SendInput(1, &ip, sizeof(INPUT));
- 
-    // Release the "A" key
-    ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
-    SendInput(1, &ip, sizeof(INPUT));
-  }
-  else
-  {
-    digitalWrite(led,LOW);
-  }
+void loop()
+{
+    analogWrite(ledPin, 0);
+    buttonState = digitalRead(buttonPin);
+
+    if (buttonState == HIGH)
+    {
+        for (brightness = 0; brightness < 255; brightness += brightup)
+        {
+            analogWrite(ledPin, brightness);
+            delay(30);
+        }
+        for (brightness = 255; brightness > 0; brightness -= brightup)
+        {
+            analogWrite(ledPin, brightness);
+            delay(30);
+        }
+        
+        //digitalWrite(ledPin,HIGH);
+    }
+    if (brightness >= 255)
+    {
+        brightness = 0;
+    }
+    //Serial.println(brightness);
+    delay(30);
+    //else
+    //{
+    //    digitalWrite(ledPin, LOW);
+    //}
 }
