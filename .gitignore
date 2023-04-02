@@ -9,7 +9,6 @@ build/
 #Copied from https://github.com/arduino/Arduino/blob/master/.gitignore
 app/bin/
 app/pde.jar
-build/macosx/work/
 arduino-core/bin/
 arduino-core/arduino-core.jar
 hardware/arduino/bootloaders/caterina_LUFA/Descriptors.o
@@ -22,6 +21,7 @@ hardware/arduino/bootloaders/caterina_LUFA/Caterina.lss
 hardware/arduino/bootloaders/caterina_LUFA/Caterina.elf
 hardware/arduino/bootloaders/caterina_LUFA/Caterina.eep
 hardware/arduino/bootloaders/caterina_LUFA/.dep/
+build/macosx/work/
 build/*.zip
 build/*.tar.bz2
 build/windows/work/
