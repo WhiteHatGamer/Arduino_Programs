@@ -5,6 +5,8 @@ UhkKeyboardDescriptors.c
 myproj/
 blink/
 build/
+*.obj
+*.pdb
 
 #Copied from https://github.com/arduino/Arduino/blob/master/.gitignore
 app/bin/
